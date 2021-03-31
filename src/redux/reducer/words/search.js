@@ -11,7 +11,6 @@ export function fetchSearch(state = defaultState, action){
             return ({ suggestions: [], exist: false, inProgress: true })
         case RECEIVE_SEARCH_LIST:
             let list = []
-            let exist = false
 
             action.payload.words.forEach((result) => {
                 list.push(result.name)

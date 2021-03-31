@@ -6,6 +6,7 @@ import store from './redux/store'
 import Home from './view/Home/index'
 
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './scss/custom.scss'
 
 function App(){

@@ -1,48 +1,23 @@
-import logo from './logo.svg';
-import { useState } from 'react'
-import './App.css';
-import axios from 'axios'
-import { Row, Col, Form, FormGroup } from 'react-bootstrap'
+import React from 'react'
+import { Provider } from 'react-redux'
+import { HashRouter, Switch, Route } from 'react-router-dom'
+import store from './redux/store'
 
-function App() {
-  const [word, setWord] = useState('')
+import Home from './view/Home/index'
 
-  const handleSearch = (e) => {
-    const value = e.target.value
+import './App.css'
+import './scss/custom.scss'
 
-    setWord(value)
-    axios({
-      method: 'post',
-      url: 'http://localhost:8000/api/word/search',
-      data: {
-        input: value
-      }
-    })
-    .then((response) => {
-      if(response.status === 200){
-        if(response.data.status === 200){
-          console.log(response.data.result)
-        }
-      }
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Form>
-          <Form.Group controlId="word">
-              <Form.Label>Search words</Form.Label>
-              <Form.Control type="text" placeholder="Word" onChange={handleSearch} value={word} autoComplete="off" required />
-          </Form.Group>
-        </Form>
-        
-      </header>
-    </div>
-  );
+function App(){
+  return(
+    <Provider store={store}>
+      <HashRouter>
+        <Switch>
+          <Route path="/" name="Home" component={Home} />
+        </Switch>
+      </HashRouter>
+    </Provider>
+  )
 }
 
 export default App;

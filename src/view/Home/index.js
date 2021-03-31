@@ -11,7 +11,6 @@ class Home extends React.Component {
 
         this.state = {
             word: '',
-            wordArray: []
         }
     }
 
@@ -24,7 +23,7 @@ class Home extends React.Component {
         let split = value.split(" ")
         let last = split[split.length - 1]
 
-        this.setState({ word: value, wordArray: split })
+        this.setState({ word: value })
 
         if(last !== " " && last.length > 0){
             this.props.fetchSearch(last)
@@ -35,9 +34,9 @@ class Home extends React.Component {
 
     render(){
         const { words, wordProgress, suggestions, exist, searchProgress } = this.props
-        const { word, wordArray } = this.state
+        const { word } = this.state
 
-        // console.log(suggestions, exist)
+        console.log(suggestions, exist)
         return(
             <div className="home">
                 <div className="vh-center">

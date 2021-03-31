@@ -13,15 +13,11 @@ export function fetchSearch(state = defaultState, action){
             let list = []
             let exist = false
 
-            action.payload.forEach((result) => {
+            action.payload.words.forEach((result) => {
                 list.push(result.name)
             })
 
-            if(list.length > 0){
-                exist = true
-            }
-
-            return Object.assign({}, state, { suggestions: list, exist, inProgress: false })
+            return Object.assign({}, state, { suggestions: list, exist: action.payload.exist, inProgress: false })
         case FAILED_SEARCH_LIST:
             return ({ suggestions: [], exist: false, inProgress: false })
         case RESET_SEARCH_LIST:

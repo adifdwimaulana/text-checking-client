@@ -42,10 +42,17 @@ body {
      height: 100vh;
 
      form {
-         width: 50%;
+        //  width: 50%;
 
          label {
              font-size: 18px;
          }
+     }
+
+     article {
+         width: 50%;
+         height: 50%;
+         border: 1px solid #fff;
+         background-color: #fff;
      }
 }
